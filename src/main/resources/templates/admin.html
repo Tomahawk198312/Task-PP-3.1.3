@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<nav>
+    <div>
+        <li>
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </div>
+</nav>
+
+<div>
+    <h1>Admin</h1>
+    <h3>All users</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+<!--            <th>Password</th>-->
+            <th>Age</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+<!--            <td th:text="${user.password}"></td>-->
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.role}"></td>
+
+            <td>
+                <a th:href="@{'/delete/' + ${user.id}}" th:text="Delete"/>
+                <a th:href="@{'/edit/' + ${user.id}}">Update</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a th:href="@{/add}">Add user</a>
+    <br>
+</div>
+</body>
+</html>

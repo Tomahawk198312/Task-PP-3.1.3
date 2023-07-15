@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control page</title>
+</head>
+<body>
+<h1>Create or update</h1>
+<div>
+    <form th:method="POST" th:action="@{/edit}" th:object="${newUser}">
+
+        <div>
+            <input th:field="*{id}" hidden/>
+        </div>
+
+        <div style="margin-bottom: 10px">
+            <input th:field="*{username}" placeholder="name"/>
+        </div>
+
+        <div style="margin-bottom: 10px">
+            <input th:field="*{password}" placeholder="password"/>
+        </div>
+
+        <div style="margin-bottom: 10px">
+            <input th:field="*{age}" placeholder="age"/>
+        </div>
+
+        <div style="margin-bottom: 10px">
+            <input th:field="*{email}" placeholder="email@mail.ru"/>
+        </div>
+
+        <div>
+            <select  class="form-control" name="roles" multiple>
+                <option th:each="role: ${allRoles}"
+                        th:value="${role.id}"
+                        th:text="${role.role}" name="roles">
+                </option>
+            </select>
+        </div>
+
+        <div style="margin-top: 25px">
+            <div>
+                <button type="submit">PUSH</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

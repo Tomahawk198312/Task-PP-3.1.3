@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>User page</title>
+</head>
+<body>
+<nav>
+    <div>
+        <li>
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </div>
+</nav>
+<div>
+    <div>
+        <h2>User</h2>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+<!--                    <th>Password</th>-->
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"/>
+                    <td th:text="${user.username}"/>
+<!--                    <td th:text="${user.password}"/>-->
+                    <td th:text="${user.age}"/>
+                    <td th:text="${user.email}"/>
+                    <td th:text="${user.role}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
